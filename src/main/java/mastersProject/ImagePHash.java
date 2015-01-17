@@ -23,7 +23,7 @@ public class ImagePHash {
 		initCoefficients();
 	}
 	
-	public int distance(String s1, String s2) {
+	public static int distance(String s1, String s2) {
 		int counter = 0;
 		for (int k = 0; k < s1.length();k++) {
 			if(s1.charAt(k) != s2.charAt(k)) {
@@ -35,13 +35,9 @@ public class ImagePHash {
 	
 	// Returns a 'binary string' (like. 001010111011100010)
 	public String getHash(BufferedImage img) throws Exception {
-		
-		/* 1. Reduce size. 
-		 */
+		//Reduce size
 		img = resize(img, size, size);
-		
-		/* 2. Reduce color. 
-		 */
+		//Reduce color.
 		img = grayscale(img);
 		
 		double[][] vals = new double[size][size];
@@ -94,7 +90,6 @@ public class ImagePHash {
 				}
 			}
 		}
-		
 		return hash;
 	}
 	

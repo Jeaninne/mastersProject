@@ -12,7 +12,7 @@ import javax.imageio.ImageIO;
 public class ParseDirectory {
 		
 	public static HashMapOfFiles parseDirectoryForImage(String szDirectoryName) {
-		HashMapOfFiles currentDirectory = new HashMapOfFiles();
+		HashMapOfFiles currentDirectory = new HashMapOfFiles(szDirectoryName);
 		File root = new File(szDirectoryName);
 		File[] files = root.listFiles();
 		int i = 0;
@@ -39,12 +39,10 @@ public class ParseDirectory {
 			files = temp;
 			i++;
 		}
-		
-		
+
 		for (int j=0;j<files.length;j++) {
 			if ((files[j]!=null) &&
 					(files[j].getPath().substring(files[j].getPath().length()-3).equals("jpg"))) {
-				//TODO System.out.println(files[j].getPath());
 				currentDirectory.addToHashMap(files[j].getPath());
 			}
 		}
